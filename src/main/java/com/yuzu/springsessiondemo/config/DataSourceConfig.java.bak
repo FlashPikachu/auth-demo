@@ -1,0 +1,27 @@
+package com.yuzu.springsessiondemo.config;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.session.jdbc.config.annotation.SpringSessionDataSource;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class DataSourceConfig {
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.one")
+    //这里添加@Primary注解，一定不能少，否则在项目启动时会出错，@Primary 表示当某一个类存在多个实例时，优先使用哪个实例
+    @Primary
+    DataSource dsOne() {
+        return DataSourceBuilder.create().build();
+    }
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.two")
+    @SpringSessionDataSource
+    DataSource dsTwo() {
+        return DataSourceBuilder.create().build();
+    }
+}

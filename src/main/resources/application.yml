@@ -1,0 +1,37 @@
+server:
+  port: 8899
+
+spring:
+  datasource:
+#    url: "jdbc:mariadb://172.29.12.233/springsessiondemo?rewriteBatchedStatements=true&connectTimeout=3000"
+#    username: root
+#    password: yuzupass
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    testOnBorrow: true
+#    validationQuery: "select 1"
+#    maximumPoolSize: 10
+#    testWhileIdle: true
+#    hikari:
+#      minimum-idle: 200
+#      maximum-pool-size: 2000
+#      pool-name: FmsHikariPool
+    primary:
+      url: "jdbc:mariadb://172.29.12.233/test?rewriteBatchedStatements=true&connectTimeout=3000"
+      username: root
+      password: yuzupass
+      driver-class-name: org.mariadb.jdbc.Driver
+      hikari:
+        minimum-idle: 200
+        maximum-pool-size: 2000
+        pool-name: FmsHikariPool1
+    second:
+      url: "jdbc:mariadb://172.29.12.233/springsessiondemo?rewriteBatchedStatements=true&connectTimeout=3000"
+      username: root
+      password: yuzupass
+      driver-class-name: org.mariadb.jdbc.Driver
+      hikari:
+        minimum-idle: 200
+        maximum-pool-size: 2000
+        pool-name: FmsHikariPool2
+  session:
+    store-type: jdbc
